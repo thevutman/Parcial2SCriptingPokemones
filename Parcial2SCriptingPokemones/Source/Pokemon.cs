@@ -6,26 +6,31 @@ using System.Threading.Tasks;
 
 namespace Parcial2SCriptingPokemones.Source
 {
-    internal class Pokemon
+    internal abstract class Pokemon
     {
-        public string Name { get; set; }
-        public int Level { get; set; }
-        public int Attack { get; set; }
-        public int Defense { get; set; }
-        public int SpecialAttack { get; set; }
-        public int SpecialDefense { get; set; }
-        public List<PokemonType> Types { get; set; }
+        public string Name { get; protected set; }
+        public int Level { get; set; } = 1;
+        public int Attack { get; set; } = 10;
+        public int Defense { get; set; } = 10;
+        public int SpecialAttack { get; set; } = 10;
+        public int SpecialDefense { get; set; } = 10;
+        public List<PokemonType> Types { get; protected set; }
+        public List<Move> Moves { get; protected set; } = new List<Move>();
 
-        public Pokemon(string name, params PokemonType[] types)
+        protected Pokemon(string name)
         {
             Name = name;
-            Types = types.ToList();
-            // Valores por defecto
-            Level = 1;
-            Attack = 10;
-            Defense = 10;
-            SpecialAttack = 10;
-            SpecialDefense = 10;
         }
+
+        // Método para añadir movimientos
+        public void AddMove(Move move)
+        {
+            if (Moves.Count < 4)
+            {
+                Moves.Add(move);
+            }
+        }
+
+     
     }
 }
