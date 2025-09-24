@@ -9,19 +9,34 @@ namespace Parcial2SCriptingPokemones.Source
     internal class Move
     {
         public string Name { get; set; }
-        public int BasePower { get; set; }
-        public int Speed { get; set; }
+
+        
+        public int BasePower { get; set; } = 100;
+
+        public int Speed { get; set; } = 1;
+
+       
         public PokemonType Type { get; set; }
+
+        
         public MoveType MoveType { get; set; }
 
+        
+        public Move(string name, int basePower, PokemonType type, MoveType moveType)
+        {
+            Name = name;
+            BasePower = basePower;
+            Type = type;
+            MoveType = moveType;
+        }
+
+       
         public Move(string name, PokemonType type, MoveType moveType)
         {
             Name = name;
             Type = type;
             MoveType = moveType;
-            // Valores por defecto
-            BasePower = 100;
-            Speed = 1;
+          
         }
     }
 }
