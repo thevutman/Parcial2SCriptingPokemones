@@ -10,9 +10,9 @@ namespace Parcial2SCriptingPokemones.Source
     {
         public string Name { get; set; }
         public int BasePower { get; set; }
+        public int Speed { get; set; }
         public PokemonType Type { get; set; }
         public MoveType MoveType { get; set; }
-        public int Speed { get; set; }
 
         public Move(string name, PokemonType type, MoveType moveType)
         {

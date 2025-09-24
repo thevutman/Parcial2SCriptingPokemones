@@ -10,9 +10,24 @@ namespace Parcial2SCriptingPokemones.Source
     {
         public static int Calculate(Pokemon attacker, Pokemon defender, Move move, double mod)
         {
-            // Esta es una implementación temporal para que el código compile.
-            // La lógica real se implementará en commits posteriores.
-            return 0;
+            double finalDamage;
+            double levelComponent = (2.0 * (attacker.Level / 5.0)) + 2.0;
+
+            if (move.MoveType == MoveType.Physical)
+            {
+                double attackDefenseComponent = (double)move.BasePower * ((double)attacker.Attack / defender.Defense);
+                finalDamage = ((levelComponent * attackDefenseComponent) / 50.0) + 2.0;
+            }
+            else // Special
+            {
+                double specialComponent = (double)move.BasePower * ((double)attacker.SpecialAttack / defender.SpecialDefense);
+                finalDamage = ((levelComponent * specialComponent) / 50.0) + 2.0;
+            }
+
+            finalDamage *= mod;
+
+            // Redondear el resultado
+            return (int)Math.Floor(finalDamage);
         }
     }
 }
